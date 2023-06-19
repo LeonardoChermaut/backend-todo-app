@@ -1,0 +1,19 @@
+version: "4.2"
+services:
+  db:
+    hostname: db
+    tty: true
+    stdin_open: true
+    image: "mariadb"
+    restart: "no"
+    ports:
+      - 3307:3306
+    environment:
+      POSTGRES_DB_TYPE: "postgres"
+      POSTGRES_DB: "postgres"
+      POSTGRES_HOST: "localhost"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_PORT: "5432"
+    volumes:
+      - "/var/lib/docker/volumes/postgres/_data"
