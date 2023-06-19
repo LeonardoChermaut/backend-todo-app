@@ -6,7 +6,7 @@ import {
 } from 'typeorm';
 
 @Entity({ name: 'todos' })
-export class TodosEntity {
+export class TodoEntity {
   @PrimaryGeneratedColumn('uuid')
   id: number;
 
