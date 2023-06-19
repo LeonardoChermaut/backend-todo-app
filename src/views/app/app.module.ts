@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TodoModule } from '../todo';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmConfigurationModule } from 'src/config/type.orm.config.module';
+import { TypeOrmConfigurationModule } from 'src/infra/config/';
 
 @Module({
   imports: [TypeOrmConfigurationModule, TodoModule],
