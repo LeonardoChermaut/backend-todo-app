@@ -11,5 +11,5 @@ export const configuration = (
   password: configService.get(process.env.DB_PASSWORD, 'root'),
   database: configService.get(process.env.DB_DATABASE, 'todoapp'),
   synchronize: true,
-  entities: ['dist/**/*.entity.{ts,js}'],
+  entities: [__dirname + '/**/*.entity.{ts,js}'],
 });
