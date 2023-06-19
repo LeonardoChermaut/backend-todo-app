@@ -37,6 +37,6 @@ export class TodoService {
 
   async deleteById(id: number) {
     await this.findOneOrFail(id);
-    await this.todoRepository.softDelete(id);
+    return await this.todoRepository.delete(id);
   }
 }
