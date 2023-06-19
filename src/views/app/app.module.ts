@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
-import { TodoModule } from 'src/views/todo';
-import { AppController, AppService } from 'src/views/app';
+import { TodoModule } from '../todo';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { TypeOrmConfigurationModule } from 'src/config/type.orm.config.module';
 
 @Module({
