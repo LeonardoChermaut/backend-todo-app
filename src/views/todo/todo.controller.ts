@@ -16,7 +16,6 @@ import { ShowTodoSwagger } from '../../helpers/swagger/';
 import {
   NotFoundRequestSwagger,
   BadRequestSwagger,
-  HttpStatusCode,
 } from '../../helpers/swagger/error';
 
 @Controller('api/v1/todos')
@@ -27,7 +26,7 @@ export class TodoController {
   @Get()
   @ApiOperation({ summary: 'Listar todas as tarefas' })
   @ApiResponse({
-    status: 200,
+    status: HttpStatus.OK,
     description: 'Lista de tarefas retornada com sucesso',
     isArray: true,
   })
@@ -38,12 +37,12 @@ export class TodoController {
   @Post()
   @ApiOperation({ summary: 'Adicionar uma nova tarefa' })
   @ApiResponse({
-    status: 201,
+    status: HttpStatus.CREATED,
     description: 'Nova tarefa criada com sucesso',
     type: CreateTodoDto,
   })
   @ApiResponse({
-    status: HttpStatusCode.BadRequest,
+    status: HttpStatus.BAD_REQUEST,
     description: 'Parâmetros inválidos',
     type: BadRequestSwagger,
   })
@@ -54,12 +53,12 @@ export class TodoController {
   @Get(':id')
   @ApiOperation({ summary: 'Exibir os dados da tarefa' })
   @ApiResponse({
-    status: 200,
+    status: HttpStatus.OK,
     description: 'Dados da tarefa retornada com sucesso',
     type: ShowTodoSwagger,
   })
   @ApiResponse({
-    status: HttpStatusCode.NotFound,
+    status: HttpStatus.NOT_FOUND,
     description: 'A tarefa não encontrada',
     type: NotFoundRequestSwagger,
   })
@@ -70,17 +69,17 @@ export class TodoController {
   @Put(':id')
   @ApiOperation({ summary: 'Atualizar os dados da tarefa' })
   @ApiResponse({
-    status: 200,
+    status: HttpStatus.OK,
     description: 'Tarefa atualizada com sucesso',
     type: UpdateTodoDto,
   })
   @ApiResponse({
-    status: HttpStatusCode.BadRequest,
+    status: HttpStatus.BAD_REQUEST,
     description: 'Dados inválidos',
     type: BadRequestSwagger,
   })
   @ApiResponse({
-    status: HttpStatusCode.NotFound,
+    status: HttpStatus.NOT_FOUND,
     description: 'Tarefa não encontrada',
     type: NotFoundRequestSwagger,
   })
@@ -93,7 +92,7 @@ export class TodoController {
   @ApiOperation({ summary: 'Remover uma tarefa' })
   @ApiResponse({ status: 204, description: 'Tarefa removida com sucesso' })
   @ApiResponse({
-    status: HttpStatusCode.NotFound,
+    status: HttpStatus.NOT_FOUND,
     description: 'Tarefa não encontrada',
     type: NotFoundRequestSwagger,
   })

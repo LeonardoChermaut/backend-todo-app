@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './views/app';
 import { SwaggerConfig } from './helpers/swagger/config';
-import { UseGlobalHttpFilter } from './views/http/exception';
+import { UseGlobalHttpFilter } from './infra/http/exception';
 
 const PORT = 3000;
 

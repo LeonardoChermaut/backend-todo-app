@@ -1,10 +1,7 @@
-export enum HttpStatusCode {
-  BadRequest = 400,
-  NotFound = 404,
-}
+import { HttpStatus } from '@nestjs/common';
 
 export interface ISwaggerResponse {
-  statusCode: HttpStatusCode;
+  statusCode: HttpStatus;
   message: string[];
   error: string;
 }
