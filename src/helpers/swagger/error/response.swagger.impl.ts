@@ -1,6 +1,6 @@
 import { HttpStatus } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
-import { ISwaggerResponse } from './response.iswagger';
+import { ISwaggerResponse } from './response.interface.swagger';
 
 export abstract class SwaggerResponse implements ISwaggerResponse {
   @ApiProperty()

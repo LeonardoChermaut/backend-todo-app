@@ -1,4 +1,4 @@
-export * from './response.iswagger';
-export { NotFoundRequestSwagger } from './notfound.swagger';
-export { BadRequestSwagger } from './badrequest.swagger';
-export { SwaggerResponse } from './response.swagger';
+export * from './response.interface.swagger';
+export { NotFoundRequestSwagger } from './notfound.request.swagger';
+export { BadRequestSwagger } from './bad.request.swagger';
+export { SwaggerResponse } from './response.swagger.impl';

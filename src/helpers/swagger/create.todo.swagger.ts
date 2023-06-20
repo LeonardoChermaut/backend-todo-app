@@ -1,3 +1,3 @@
-import { TodoEntity } from '../../domain/entity/todo.entity';
+import { TodoSwagger } from './todo.swagger';
 
-export class CreateTodoSwagger extends TodoEntity {}
+export class CreateTodoSwagger extends TodoSwagger {}

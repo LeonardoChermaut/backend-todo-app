@@ -1,7 +1,7 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { INestApplication } from '@nestjs/common';
 
-export class SwaggerConfig {
+export class SwaggerDocumentBuilderModule {
   static setup(app: INestApplication): void {
     const options = new DocumentBuilder()
       .setTitle('Todo API NESTJS')

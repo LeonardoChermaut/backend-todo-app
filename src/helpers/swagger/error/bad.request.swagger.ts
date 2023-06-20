@@ -1,3 +1,3 @@
-import { SwaggerResponse } from './response.swagger';
+import { SwaggerResponse } from './response.swagger.impl';
 
 export class BadRequestSwagger extends SwaggerResponse {}

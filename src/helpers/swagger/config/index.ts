@@ -1,1 +1,1 @@
-export { SwaggerConfig } from './swagger.config';
+export { SwaggerDocumentBuilderModule } from './swagger.config';

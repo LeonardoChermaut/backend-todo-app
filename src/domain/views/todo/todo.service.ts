@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { CreateTodoDto } from './dto/create.todo.dto';
 import { UpdateTodoDto } from './dto/update.todo.dto';
 import { TodoEntity } from '../../entity/todo.entity';
-import { ExceptionHandler } from '../../../helpers/infra/http/exception';
+import { ExceptionHandler } from '../../http/exception';
 
 @Injectable()
 export class TodoService {

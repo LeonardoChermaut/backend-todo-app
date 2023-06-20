@@ -1,14 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './domain/views/app';
-import { SwaggerConfig } from './helpers/swagger/config';
-import { UseGlobalHttpFilter } from './helpers/infra/http/exception';
-
-const PORT = 3000;
+import { SwaggerDocumentBuilderModule } from './helpers/swagger/config';
+import { UseGlobalHttpFilter } from './domain/http/exception';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(new UseGlobalHttpFilter());
-  SwaggerConfig.setup(app);
-  await app.listen(PORT);
+  SwaggerDocumentBuilderModule.setup(app);
+  await app.listen(process.env.PORT);
 }
 bootstrap();
