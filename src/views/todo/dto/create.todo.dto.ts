@@ -7,7 +7,7 @@ export class CreateTodoDto {
   task: string;
 
   @IsNotEmpty()
-  @IsIn([0, 1])
+  @IsIn([true, false])
   @ApiPropertyOptional()
-  isDone: number;
+  isDone: boolean;
 }

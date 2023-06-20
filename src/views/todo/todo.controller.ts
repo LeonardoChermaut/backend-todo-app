@@ -6,7 +6,6 @@ import {
   HttpCode,
   HttpStatus,
   Param,
-  ParseUUIDPipe,
   Post,
   Put,
 } from '@nestjs/common';
@@ -17,6 +16,7 @@ import { ShowTodoSwagger } from '../../helpers/swagger/';
 import {
   NotFoundRequestSwagger,
   BadRequestSwagger,
+  HttpStatusCode,
 } from '../../helpers/swagger/error';
 
 @Controller('api/v1/todos')
@@ -43,7 +43,7 @@ export class TodoController {
     type: CreateTodoDto,
   })
   @ApiResponse({
-    status: 400,
+    status: HttpStatusCode.BadRequest,
     description: 'Parâmetros inválidos',
     type: BadRequestSwagger,
   })
@@ -59,11 +59,11 @@ export class TodoController {
     type: ShowTodoSwagger,
   })
   @ApiResponse({
-    status: 404,
+    status: HttpStatusCode.NotFound,
     description: 'A tarefa não encontrada',
     type: NotFoundRequestSwagger,
   })
-  async show(@Param('id', new ParseUUIDPipe()) id: number) {
+  async show(@Param('id') id: number) {
     return await this.todoService.findOneOrFail(id);
   }
 
@@ -75,19 +75,16 @@ export class TodoController {
     type: UpdateTodoDto,
   })
   @ApiResponse({
-    status: 400,
+    status: HttpStatusCode.BadRequest,
     description: 'Dados inválidos',
     type: BadRequestSwagger,
   })
   @ApiResponse({
-    status: 404,
+    status: HttpStatusCode.NotFound,
     description: 'Tarefa não encontrada',
     type: NotFoundRequestSwagger,
   })
-  async update(
-    @Param('id', new ParseUUIDPipe()) id: number,
-    @Body() body: UpdateTodoDto,
-  ) {
+  async update(@Param('id') id: number, @Body() body: UpdateTodoDto) {
     return await this.todoService.update(id, body);
   }
 
@@ -96,11 +93,11 @@ export class TodoController {
   @ApiOperation({ summary: 'Remover uma tarefa' })
   @ApiResponse({ status: 204, description: 'Tarefa removida com sucesso' })
   @ApiResponse({
-    status: 404,
+    status: HttpStatusCode.NotFound,
     description: 'Tarefa não encontrada',
     type: NotFoundRequestSwagger,
   })
-  async destroy(@Param('id', new ParseUUIDPipe()) id: number) {
+  async destroy(@Param('id') id: number) {
     await this.todoService.deleteById(id);
   }
 }

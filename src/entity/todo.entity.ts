@@ -13,14 +13,14 @@ export class TodoEntity {
     }
   }
 
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn({ name: 'id', type: 'int' })
   id: number;
 
   @Column({ name: 'task', type: 'varchar', length: 255 })
   task: string;
 
-  @Column({ name: 'is_done', type: 'tinyint', width: 1 })
-  isDone: number;
+  @Column({ name: 'is_done', type: 'boolean', default: false })
+  isDone: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
