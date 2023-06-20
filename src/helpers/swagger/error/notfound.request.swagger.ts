@@ -5,7 +5,7 @@ export class NotFoundRequestSwagger {
   statusCode: number;
 
   @ApiProperty()
-  message: string[];
+  message: string;
 
   @ApiProperty()
   error: string;

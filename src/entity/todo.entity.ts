@@ -7,6 +7,12 @@ import {
 
 @Entity({ name: 'todos' })
 export class TodoEntity {
+  constructor(todo?: Partial<TodoEntity>) {
+    if (todo) {
+      Object.assign(this, todo);
+    }
+  }
+
   @PrimaryGeneratedColumn('uuid')
   id: number;
 
