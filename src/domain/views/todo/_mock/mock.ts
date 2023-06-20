@@ -1,4 +1,4 @@
-import { TodoEntity } from '../../../entity/todo.entity';
+import { TodoEntity } from '../../../entity';
 import { CreateTodoDto, UpdateTodoDto } from '../dto';
 
 export const listTodoEntityMock: TodoEntity[] = [

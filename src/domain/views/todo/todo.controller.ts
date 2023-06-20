@@ -12,11 +12,11 @@ import {
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { TodoService } from './todo.service';
 import { UpdateTodoDto, CreateTodoDto } from './dto';
-import { ShowTodoSwagger } from '../../helpers/swagger/';
+import { ShowTodoSwagger } from '../../../helpers/swagger';
 import {
   NotFoundRequestSwagger,
   BadRequestSwagger,
-} from '../../helpers/swagger/error';
+} from '../../../helpers/swagger/error';
 
 @Controller('api/v1/todos')
 @ApiTags('todos')
