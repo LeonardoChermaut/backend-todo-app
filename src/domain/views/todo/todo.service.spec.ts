@@ -3,7 +3,12 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TodoService } from './todo.service';
 import { TodoEntity } from '../../entity';
-import { createTodoMock, listTodoEntityMock, todoEntityMock, updateTodoMock } from './_mock';
+import {
+  createTodoMock,
+  listTodoEntityMock,
+  todoEntityMock,
+  updateTodoMock,
+} from './_mock';
 
 describe('TodoService', () => {
   let todoService: TodoService;
