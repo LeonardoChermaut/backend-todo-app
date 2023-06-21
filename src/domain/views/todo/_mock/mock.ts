@@ -9,7 +9,7 @@ export const listTodoEntityMock: TodoEntity[] = [
   new TodoEntity({ task: 'Todo 100', isDone: true }),
 ];
 
-export const todoEntityMock: TodoEntity = { ...listTodoEntityMock[3] };
+export const todoEntityMock: TodoEntity = { ...listTodoEntityMock[2] };
 
 export const createTodoMock: CreateTodoDto = { ...todoEntityMock };
 
