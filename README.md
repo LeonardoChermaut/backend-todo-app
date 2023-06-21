@@ -2,10 +2,10 @@
 
 ## Description
 
-This is the API for the TODOAPP. The frontend interface was created using React, you can [take a look here](https://github.com/leobritob/youtube-todoapp-frontend).
+This is the API for the TODOAPP. The frontend interface was created using React, you can [take a look here](#COMING SOON).
 
 ## Preview
-![TODOAPP SWAGGER API](./preview-swagger.png)
+![TODOAPP SWAGGER API](https://i.imgur.com/RvCruzI.png)
 
 ## Before Installation
 
