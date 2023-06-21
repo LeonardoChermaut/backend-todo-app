@@ -3,7 +3,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TodoService } from './todo.service';
 import { TodoEntity } from '../../entity';
-import { listTodoEntityMock, todoEntityMock } from './_mock';
+import { createTodoMock, listTodoEntityMock, todoEntityMock, updateTodoMock } from './_mock';
 
 describe('TodoService', () => {
   let todoService: TodoService;
@@ -18,10 +18,10 @@ describe('TodoService', () => {
           useValue: {
             find: jest.fn().mockResolvedValue(listTodoEntityMock),
             findOneOrFail: jest.fn().mockResolvedValue(todoEntityMock),
-            create: jest.fn().mockReturnValueOnce(todoEntityMock),
-            save: jest.fn().mockResolvedValue(todoEntityMock),
-            merge: jest.fn(),
-            delete: jest.fn(),
+            create: jest.fn().mockReturnValue(createTodoMock),
+            save: jest.fn().mockResolvedValue(createTodoMock),
+            merge: jest.fn().mockReturnValue(updateTodoMock),
+            delete: jest.fn().mockResolvedValue(undefined),
           },
         },
       ],
@@ -79,6 +79,41 @@ describe('TodoService', () => {
     it('should throw an error if creating todo fails', async () => {
       jest.spyOn(todoRepository, 'save').mockRejectedValueOnce(new Error());
       await expect(todoService.create(todoEntityMock)).rejects.toThrowError();
+    });
+  });
+
+  describe('update', () => {
+    it('should update a todo entity successfully', async () => {
+      const result = await todoService.update(
+        todoEntityMock.id,
+        updateTodoMock,
+      );
+      expect(result).toEqual(updateTodoMock);
+      expect(todoRepository.merge).toHaveBeenCalledTimes(1);
+      expect(todoRepository.save).toHaveBeenCalledTimes(1);
+    });
+
+    it('should throw an error if updating todo fails', async () => {
+      jest.spyOn(todoRepository, 'save').mockRejectedValueOnce(new Error());
+      await expect(
+        todoService.update(todoEntityMock.id, updateTodoMock),
+      ).rejects.toThrowError();
+    });
+  });
+
+  describe('deleteById', () => {
+    it('should delete a todo entity successfully', async () => {
+      const result = await todoService.deleteById(todoEntityMock.id);
+      expect(result).toBeUndefined();
+      expect(todoRepository.findOneOrFail).toHaveBeenCalledTimes(1);
+      expect(todoRepository.delete).toHaveBeenCalledTimes(1);
+    });
+
+    it('should throw an error if deleting todo fails', async () => {
+      jest.spyOn(todoRepository, 'delete').mockRejectedValueOnce(new Error());
+      await expect(
+        todoService.deleteById(todoEntityMock.id),
+      ).rejects.toThrowError();
     });
   });
 });
