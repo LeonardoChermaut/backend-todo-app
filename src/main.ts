@@ -3,16 +3,21 @@ import { AppModule } from './domain/views/app';
 import { SwaggerDocumentBuilderModule } from './helpers/swagger/config';
 import { UseGlobalHttpFilter } from './domain/http/exception';
 import { UseGlobalValidationPipe } from './domain/validation/common/use.validation.pipe';
+import { EnvConfiguration } from './helpers/env';
+import { log } from 'console';
 
-const PORT = process.env.PORT || 3000;
-const IS_CORS: object = { cors: true };
-
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule, IS_CORS);
+const bootstrap = async () => {
+  const app = await NestFactory.create(AppModule, { cors: true });
   app.useGlobalFilters(new UseGlobalHttpFilter());
   app.useGlobalPipes(new UseGlobalValidationPipe());
+
+  const envConfig = app.get(EnvConfiguration);
+  const port = envConfig.getConfig('APP_PORT');
+
   SwaggerDocumentBuilderModule.setup(app);
 
-  await app.listen(PORT);
-}
+  await app.listen(port);
+  log(`Application is running on port: [${port}]`);
+};
+
 bootstrap();
