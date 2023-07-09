@@ -6,7 +6,13 @@ export class SwaggerDocumentBuilderModule {
     const options = new DocumentBuilder()
       .setTitle('Todo API NESTJS')
       .setDescription('API para aplicação de tarefas')
+      .addTag('Todo')
       .setVersion('1.0')
+      .setContact(
+        'Leonardo Chermaut',
+        'https://github.com/leonardochermaut',
+        'leonardochermaut.jobs@gmail.com',
+      )
       .build();
 
     const document = SwaggerModule.createDocument(app, options);
