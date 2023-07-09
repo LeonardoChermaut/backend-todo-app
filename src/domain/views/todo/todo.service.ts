@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { CreateTodoDto } from './dto/create.todo.dto';
 import { UpdateTodoDto } from './dto/update.todo.dto';
 import { TodoEntity } from '../../entity/todo.entity';
-import { ExceptionHandler } from '../../http/exception';
+import { HandleHttpException } from '../../http/exception';
 
 @Injectable()
 export class TodoService {
@@ -21,7 +21,7 @@ export class TodoService {
     try {
       return await this.todoRepository.findOneOrFail({ where: { id } });
     } catch (error) {
-      throw new ExceptionHandler(error.message, HttpStatus.NOT_FOUND);
+      throw new HandleHttpException(error.message, HttpStatus.NOT_FOUND);
     }
   }
 
@@ -29,7 +29,7 @@ export class TodoService {
     try {
       return await this.todoRepository.save(this.todoRepository.create(data));
     } catch (error) {
-      throw new ExceptionHandler(error.message, HttpStatus.BAD_REQUEST);
+      throw new HandleHttpException(error.message, HttpStatus.BAD_REQUEST);
     }
   }
 
@@ -40,7 +40,7 @@ export class TodoService {
       this.todoRepository.merge(todo, data);
       return await this.todoRepository.save(todo);
     } catch (error) {
-      throw new ExceptionHandler(error.message, HttpStatus.BAD_REQUEST);
+      throw new HandleHttpException(error.message, HttpStatus.BAD_REQUEST);
     }
   }
 
@@ -49,7 +49,7 @@ export class TodoService {
       await this.findOneOrFail(id);
       return await this.todoRepository.delete(id);
     } catch (error) {
-      throw new ExceptionHandler(error.message, HttpStatus.NOT_FOUND);
+      throw new HandleHttpException(error.message, HttpStatus.NOT_FOUND);
     }
   }
 }
