@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { IEnv } from './env.interface';
 import { EnvConfiguration } from 'src/helpers/env';
 import { ConfigService } from '@nestjs/config';
+import { log } from 'console';
 
 @Injectable()
 export class EnvService implements IEnv {
@@ -10,7 +11,7 @@ export class EnvService implements IEnv {
   getDatabase(config: ConfigService): any {
     const env = this.envConfig;
     return {
-      type: 'mariadb',
+      type: config.get('DB_TYPE', env.getValue('DB_TYPE')),
       host: config.get('DB_HOST', env.getValue('DB_HOST')),
       port: config.get('DB_PORT', env.getValue('DB_PORT')),
       username: config.get('DB_USERNAME', env.getValue('DB_USERNAME')),
