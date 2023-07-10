@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './domain/views/app';
 import { SwaggerDocumentBuilderModule } from './helpers/swagger/config';
 import { UseGlobalHttpFilter } from './domain/http/exception';
-import { UseGlobalValidationPipe } from './domain/validation/common/use.validation.pipe';
+import { UseGlobalValidationPipe } from './domain/http/validation';
 import { EnvConfiguration } from './helpers/env';
 import { log } from 'console';
 
