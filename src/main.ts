@@ -3,7 +3,7 @@ import { AppModule } from './domain/views/app';
 import { SwaggerDocumentBuilderModule } from './helpers/swagger/config';
 import { UseGlobalHttpFilter } from './domain/http/exception';
 import { UseGlobalValidationPipe } from './domain/http/validation';
-import { EnvConfiguration } from './helpers/env';
+import { EnvService } from './helpers/env';
 import { log } from 'console';
 
 const bootstrap = async () => {
@@ -11,8 +11,8 @@ const bootstrap = async () => {
   app.useGlobalFilters(new UseGlobalHttpFilter());
   app.useGlobalPipes(new UseGlobalValidationPipe());
 
-  const envConfig = app.get(EnvConfiguration);
-  const port = envConfig.getConfig('APP_PORT');
+  const env = app.get(EnvService);
+  const port = env.getAppPort();
 
   SwaggerDocumentBuilderModule.setup(app);
 
