@@ -10,13 +10,13 @@ export const configuration = (
     env.getDatabase(config);
 
   return {
-    type: type as any,
-    host: host,
-    port: port,
-    username: username,
-    password: password,
-    database: database,
-    synchronize: synchronize,
+    type,
+    host,
+    port,
+    username,
+    password,
+    database,
+    synchronize,
     entities: ['dist/**/*.entity.{ts,js}'],
   };
 };
