@@ -7,6 +7,7 @@ This is the API for the TODOAPP. The frontend interface was created using React,
 ## Preview
 
 ### TODOAPP SWAGGER API
+[LINK SWAGGER](localhost:3000/swagger)
 <img src='https://i.imgur.com/RvCruzI.png' alt="TODO IMAGE"/>
 
 ## Before Installation
