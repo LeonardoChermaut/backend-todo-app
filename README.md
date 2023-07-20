@@ -2,7 +2,7 @@
 
 ## Description
 
-This is the API for the TODOAPP. The frontend interface was created using React, you can [take a look here](#COMING SOON).
+This is the API for the TODOAPP. The frontend interface was created using React, you can [React Project Front-End](https://github.com/LeonardoChermaut/vite-todo-app).
 
 ## Preview
 
