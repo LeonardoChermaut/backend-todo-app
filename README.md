@@ -7,7 +7,6 @@ This is the API for the TODOAPP. The frontend interface was created using React,
 ## Preview
 
 ### TODOAPP SWAGGER API
-[LINK SWAGGER](http://localhost:3000/swagger)
 <img src='https://i.imgur.com/RvCruzI.png' alt="TODO IMAGE"/>
 
 ## Before Installation
@@ -17,6 +16,8 @@ Create a .env file and fill with your database credentials.
 ## Installation
 
 ```bash
+$ yarn install
+or
 $ npm install
 ```
 
@@ -24,13 +25,13 @@ $ npm install
 
 ```bash
 # development
-$ npm run start
+$ nest start --watch
 
-# watch mode
-$ npm run start:dev
+# run
+$ nest start
 
 # production mode
-$ npm run start:prod
+$ yarn start:prod
 ```
 
 ## Test
